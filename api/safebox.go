@@ -15,3 +15,32 @@ limitations under the License.
 */
 
 package api
+
+import (
+	"fmt"
+
+	restapi "github.com/arxanchain/sdk-go-common/rest/api"
+)
+
+// SafeboxClient is a http agent to safebox service.
+//
+type SafeboxClient struct {
+	c *restapi.Client
+}
+
+// NewSafeboxClient returns a SafeboxClient instance.
+//
+func NewSafeboxClient(config *restapi.Config) (*SafeboxClient, error) {
+	if config == nil {
+		return nil, fmt.Errorf("config is nil")
+	}
+	if config.RouteTag == "" {
+		config.RouteTag = "safebox"
+	}
+
+	c, err := restapi.NewClient(config)
+	if err != nil {
+		return nil, err
+	}
+	return &SafeboxClient{c: c}, nil
+}
