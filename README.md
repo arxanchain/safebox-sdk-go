@@ -1,7 +1,2 @@
-# Status
-
 # safebox-go-sdk
-
-# Usage
-
-## Install
+This SDK enables Go developers to develop applications that interact with Arxanchain SafeBox
